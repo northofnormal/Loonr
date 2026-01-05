@@ -8,31 +8,45 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingMoonSheet = false
+    @State private var showingMeetSheet = false
+
     var body: some View {
-        VStack {
-            Button {
-                // do a thing
-            } label: {
-                Text("Map 🗺️")
-            }
-            .buttonStyle(LargeButtonStyle())
+        NavigationStack {
+            VStack {
+                NavigationLink(destination: MapView()) {
+                    Text("Map 🗺️")
+                        .font(.system(.title))
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.brown)
+                        .foregroundStyle(Color.white)
+                        .clipShape(Capsule())
+                }
 
-            Button {
-                // do a thing
-            } label: {
-                Text("Moon 🌕")
-            }
-            .buttonStyle(LargeButtonStyle())
+                Button {
+                    showingMoonSheet.toggle()
+                } label: {
+                    Text("Moon 🌕")
+                }
+                .buttonStyle(LargeButtonStyle())
 
-            Button {
-                // do a thing
-            } label: {
-                Text("Meet 🐾")
-            }
-            .buttonStyle(LargeButtonStyle())
+                Button {
+                    showingMeetSheet.toggle()
+                } label: {
+                    Text("Meet 🐾")
+                }
+                .buttonStyle(LargeButtonStyle())
 
+            }
+            .padding()
         }
-        .padding()
+        .sheet(isPresented: $showingMoonSheet) {
+            MoonView()
+        }
+        .sheet(isPresented: $showingMeetSheet) {
+            MeetView()
+        }
     }
 }
 
