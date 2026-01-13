@@ -10,7 +10,9 @@ import MapKit
 import SwiftUI
 
 struct MapView: View {
-    @StateObject var manager = LocationManager()
+    @StateObject var manager = LocationManager.shared
+
+    
     @State private var position: MapCameraPosition = .userLocation(fallback: .automatic)
     @State private var pinnedLocations: [PinnedLocation] = []
     @State private var temporaryLocation: CLLocationCoordinate2D?

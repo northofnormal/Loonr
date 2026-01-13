@@ -7,6 +7,7 @@
 
 import AlarmKit
 import Foundation
+
 struct MoonData: Codable {
     
     let moonrise: String

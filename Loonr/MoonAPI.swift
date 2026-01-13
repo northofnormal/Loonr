@@ -9,11 +9,11 @@ import Foundation
 
 struct MoonAPI {
 
-    func fetchMoonData() async throws -> MoonData? {
+    func fetchMoonData(latitude: String, longitude: String) async throws -> MoonData? {
         var urlComponents = URLComponents(string: "https://api.stormglass.io/v2/astronomy/point")
         urlComponents?.queryItems = [
-            URLQueryItem(name: "lat", value: "41.4562"),
-            URLQueryItem(name: "lng", value: "-82.7117")
+            URLQueryItem(name: "lat", value: latitude),
+            URLQueryItem(name: "lng", value: latitude)
         ]
 
         guard let moonURL = urlComponents?.url else {

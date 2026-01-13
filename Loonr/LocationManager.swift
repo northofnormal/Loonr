@@ -11,6 +11,7 @@ import Foundation
 import MapKit
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+    static let shared = LocationManager()
     private let locationManager = CLLocationManager()
 
     @Published var region = MKCoordinateRegion()
